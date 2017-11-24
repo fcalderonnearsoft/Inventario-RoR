@@ -1,4 +1,5 @@
 class Location < ApplicationRecord
-    has_many :equipment_in_locations
-    has_many :equipments, through :equipment_in_locations
+    has_many :relationship, foreign_key: "location_id"
+    has_many :equipment, through: :relationship
+
 end

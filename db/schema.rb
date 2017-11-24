@@ -22,18 +22,21 @@ ActiveRecord::Schema.define(version: 20171124025000) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "equipment_in_locations", force: :cascade do |t|
-    t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "equipment_id"
-    t.integer "location_id"
-  end
-
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "equipment_id"
+    t.integer "location_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["equipment_id"], name: "index_relationships_on_equipment_id"
+    t.index ["location_id", "equipment_id"], name: "index_relationships_on_location_id_and_equipment_id", unique: true
+    t.index ["location_id"], name: "index_relationships_on_location_id"
   end
 
   create_table "relationships", force: :cascade do |t|
