@@ -1,0 +1,31 @@
+<h1>Listing all equipment in locations</h1>
+
+<span><%= link_to  "Add new location", new_location_path, class: "btn btn-primary"%></span>
+<span><%= link_to  "Add new equipment", new_equipment_path, class: "btn btn-primary" %></span>
+
+
+<br/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Item
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @equipments.each do |equipment| %>
+            <tr>
+                <td><%= equipment.name %></td>
+                <td><%= equipment.description %></td>
+                <td> <%= link_to "Show", equipment_path(equipment) %>  </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+
+
