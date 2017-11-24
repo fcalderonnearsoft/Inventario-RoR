@@ -1,14 +1,15 @@
 class EquipmentsController < ApplicationController
     
     def new
-        @equipment = Equipment.new
+        equipment = Equipment.new
+        render :new, locals: { equipment: equipment }
     end
 
     def create
-        @equipment = Equipment.new(equipment_params)
+        equipment = Equipment.new(equipment_params)
 
-        if @equipment.save
-            Relationship.create_equipment_in_location(@equipment, Location.all)
+        if equipment.save
+            Relationship.create_equipment_in_location(equipment, Location.all)
             redirect_to root_path
         else
             render 'new'
@@ -16,11 +17,13 @@ class EquipmentsController < ApplicationController
     end
 
     def index
-        @equipments = Equipment.all
+        equipments = Equipment.all
+        render :index, locals: { equipments: equipments }
     end
 
     def show
-        @equipment = Equipment.find(params[:id])
+        equipment = Equipment.find(params[:id])
+        render :show, locals: { equipment: equipment }
     end
 
     private
