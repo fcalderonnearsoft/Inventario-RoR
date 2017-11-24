@@ -1,0 +1,32 @@
+<h2> <%= @equipment.name %> </h2>
+
+
+<%= link_to  "Back", root_path, class: "btn btn-info" %>
+
+<h4><strong> Items available </strong></h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Office
+            </th>
+            <th>
+                Items available
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @equipment.relationship.each do |relationship| %>
+            <tr>
+                <td>
+                    <%= relationship.location.name %>
+                </td>
+                <td>
+                    <%= relationship.quantity %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
