@@ -39,15 +39,4 @@ ActiveRecord::Schema.define(version: 20171124025000) do
     t.index ["location_id"], name: "index_relationships_on_location_id"
   end
 
-  create_table "relationships", force: :cascade do |t|
-    t.integer "equipment_id"
-    t.integer "location_id"
-    t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["equipment_id"], name: "index_relationships_on_equipment_id"
-    t.index ["location_id", "equipment_id"], name: "index_relationships_on_location_id_and_equipment_id", unique: true
-    t.index ["location_id"], name: "index_relationships_on_location_id"
-  end
-
 end
