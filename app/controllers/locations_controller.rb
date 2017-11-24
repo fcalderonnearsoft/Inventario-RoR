@@ -1,12 +1,13 @@
 class LocationsController < ApplicationController
     def new
-        @location = Location.new
+        location = Location.new
+        render :new, locals: { location: location }
     end
 
     def create
-        @location = Location.new(location_params)
+        location = Location.new(location_params)
 
-        if @location.save
+        if location.save
             redirect_to root_path
         else
             render 'new'
