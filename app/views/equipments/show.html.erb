@@ -23,10 +23,17 @@
                     <%= relationship.location.name %>
                 </td>
                 <td>
-                    <%= relationship.quantity %>
+                   <button type="button" class="btn btn-default btn-circle" onclick="removeOne(<%= relationship.id %>)"><i class="glyphicon glyphicon-minus-sign"></i></button>
+                    <label id="quantity-<%= relationship.id %>"  ><%= relationship.quantity %></label>
+                    <button type="button" class="btn btn-default btn-circle" onclick="addOne(<%= relationship.id %>)"><i class="glyphicon glyphicon-plus-sign"></i></button>
                 </td>
+                    <%= form_tag( {controller: "relationships", action: "create" }, method: "post", id: "edit_relationship_".concat(relationship.id.to_s) ) do |f| %>
+                        <%= hidden_field_tag ("quantity".concat(relationship.id.to_s).to_sym  ) %>
+                    <% end %>
             </tr>
         <% end %>
     </tbody>
 </table>
+
+<button onclick="submitForms()" class="btn btn-primary">Save</button>
 
