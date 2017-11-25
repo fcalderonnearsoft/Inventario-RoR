@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'pg'
 gem 'slim'
 gem 'rspec-rails'
+gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
