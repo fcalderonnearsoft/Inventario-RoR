@@ -24,7 +24,7 @@
         <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
       <% end %>
     </p>
-    <% if notice %>
+    <% if notice && !notice == true %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
     <% if alert %>
