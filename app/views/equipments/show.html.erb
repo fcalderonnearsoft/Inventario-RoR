@@ -1,32 +1,49 @@
-<h2> <%= equipment.name %> </h2>
+<h2>
+    <%= equipment.name %>
+</h2>
 
 
 <%= link_to  "Back", root_path, class: "btn btn-info" %>
 
-<h4><strong> Items available </strong></h4>
+<br/>
+<br/>
+<% if flash[:notice] %>
+    <div class="alert alert-success alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Successfuly updated!</strong> 
+    </div>
+<% end %>
+<br/>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Office
-            </th>
-            <th>
-                Items available
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <% equipment.relationship.each do |relationship| %>
-            <tr>
-                <td>
-                    <%= relationship.location.name %>
-                </td>
-                <td>
-                    <%= relationship.quantity %>
-                </td>
-            </tr>
+    <h4><strong> Items available </strong></h4>
+
+    <%= form_tag({controller: "relationships", action: "create" }, method: "post", id: "edit_relationship", authenticity_token: true) do |f| %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Office
+                    </th>
+                    <th>
+                        Items available
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% equipment.relationship.each do |relationship| %>
+                    <tr>
+                        <td>
+                            <%= relationship.location.name %>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-default btn-circle" onclick="removeOne(<%= relationship.id %>)"><i class="glyphicon glyphicon-minus-sign"></i></button>
+                            <label id="quantity-<%= relationship.id %>"><%= relationship.quantity %></label>
+                            <button type="button" class="btn btn-default btn-circle" onclick="addOne(<%= relationship.id %>)"><i class="glyphicon glyphicon-plus-sign"></i></button>
+                        </td>
+                        <%= hidden_field_tag ("relationship[][quantity".concat(relationship.id.to_s).concat("]")  ) %>
+                    </tr>
+                    <% end %>
+            </tbody>
+        </table>
+            <%= submit_tag %>
         <% end %>
-    </tbody>
-</table>
-
