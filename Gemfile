@@ -33,6 +33,7 @@ gem 'pg'
 gem 'slim'
 gem 'rspec-rails'
 gem 'devise'
+gem 'rails-controller-testing'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
