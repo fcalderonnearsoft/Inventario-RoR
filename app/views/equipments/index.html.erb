@@ -21,9 +21,9 @@
             <tr>
                 <td><%= equipment.name %></td>
                 <td><%= equipment.description %></td>
-                <td> <%= link_to "Show", equipment_path(equipment) %>  </td>
-                <td> <%= link_to "Edit", edit_equipment_path(equipment) %>  </td>
-                <td> <%= link_to "Delete", equipment_path(equipment), method: :delete %>  </td>
+                <td> <%= link_to "Show", equipment_path(equipment), class: "btn btn-info" %>  </td>
+                <td> <%= link_to "Edit", edit_equipment_path(equipment), class: "btn btn-success" %>  </td>
+                <td> <%= link_to "Delete", equipment_path(equipment), method: :delete, class: "btn btn-danger" %>  </td>
             </tr>
         <% end %>
     </tbody>
