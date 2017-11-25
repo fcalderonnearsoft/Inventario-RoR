@@ -3,6 +3,7 @@ class Relationship < ApplicationRecord
     belongs_to :equipment
     validates :location_id, presence: true
     validates :equipment_id, presence: true
+    validates :quantity, presence: true, length: { minimum: 1 }
     
     def self.create_equipment_in_location(equipment, locations)
         locations.each do |location|
