@@ -16,6 +16,28 @@ class EquipmentsController < ApplicationController
         end
     end
 
+    def edit
+        equipment = Equipment.find(params[:id])
+        render :edit, locals: { equipment: equipment }
+    end
+
+    def update
+        equipment = Equipment.find(params[:id])
+
+        if equipment.update(equipment_params)
+            redirect_to root_path
+        else
+            render :edit
+        end
+    end
+
+    def destroy
+        equipment = Equipment.find(params[:id])
+        equipment.destroy
+
+        redirect_to root_path
+    end
+
     def index
         equipments = Equipment.all
         render :index, locals: { equipments: equipments }
