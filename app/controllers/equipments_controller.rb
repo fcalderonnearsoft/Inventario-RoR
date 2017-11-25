@@ -23,7 +23,7 @@ class EquipmentsController < ApplicationController
 
     def show
         equipment = Equipment.find(params[:id])
-        render :show, locals: { equipment: equipment }
+        render :show, locals: { equipment: equipment, notice: false }
     end
 
     private

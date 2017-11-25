@@ -5,6 +5,16 @@
 
 <%= link_to  "Back", root_path, class: "btn btn-info" %>
 
+<br/>
+<br/>
+<% if flash[:notice] %>
+    <div class="alert alert-success alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Successfuly updated!</strong> 
+    </div>
+<% end %>
+<br/>
+
     <h4><strong> Items available </strong></h4>
 
     <%= form_tag({controller: "relationships", action: "create" }, method: "post", id: "edit_relationship", authenticity_token: true) do |f| %>
