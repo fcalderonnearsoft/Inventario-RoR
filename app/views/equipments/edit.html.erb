@@ -1,0 +1,17 @@
+<h2>Edit equipment</h2>
+
+<%= form_with model: equipment, local: true do |form| %>
+    <p>
+        <%= form.label :name %><br/>
+        <%= form.text_field :name %><br/>
+    </p>
+
+    <p>
+        <%= form.label :description %><br/>
+        <%= form.text_area :description %><br/>
+    </p>
+
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
