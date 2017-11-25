@@ -1,17 +1,33 @@
-<h2>Edit equipment</h2>
+<div class="col-md-8 col-md-offset-4">
+    <h2>Edit equipment</h2>
 
-<%= form_with model: equipment, local: true do |form| %>
-    <p>
-        <%= form.label :name %><br/>
-        <%= form.text_field :name %><br/>
-    </p>
+    <%= form_with model: equipment, local: true do |form| %>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <%= form.label :name %><br/>
+                <%= form.text_field :name, class: "form-control" %><br/>
+            </div>
+        </div>
+    </div>
 
-    <p>
-        <%= form.label :description %><br/>
-        <%= form.text_area :description %><br/>
-    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <%= form.label :description %><br/>
+                <%= form.text_area :description, class: "form-control" %><br/>
+            </div>
+        </div>
+    </div>
 
-    <p>
-        <%= form.submit %>
-    </p>
-<% end %>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <%= form.submit "Update", class: "btn btn-primary" %>
+            </div>
+        </div>
+    </div>
+    <% end %>
+
+    <%= link_to  "Back", root_path %>
+</div>
