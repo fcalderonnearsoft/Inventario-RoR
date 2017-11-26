@@ -27,13 +27,43 @@ RSpec.describe EquipmentsController, type: :controller do
     end
 
     describe "#create" do
-        it "should render create new equipment" do
+        it "should create new equipment" do
             sign_in
             post :create, params: { equipment: { name: "TestName", description: "Test description" } }
             equipment = Equipment.where(name: "TestName", description: "Test description")
             expect(equipment).not_to be_nil
             relationship = Relationship.where(equipment_id: equipment[0].id)
             expect(relationship).not_to be_nil
+        end
+    end
+
+    describe "#edit" do
+        it "should render edit template" do
+            sign_in
+            equipment = Equipment.first
+            get :edit, params: { id: equipment.id }
+            expect(response).to render_template(:edit)
+        end
+    end
+
+    describe "#update" do
+        it "should update equipment" do
+            sign_in
+            equipment = Equipment.first
+            post :update, params: { id: equipment.id, equipment: { name: "Name Updated", description: "Description updated" } }
+            equipment = Equipment.find(equipment.id)
+            expect(equipment.name).to eq("Name Updated")
+            expect(equipment.description).to eq("Description updated")
+        end
+    end
+
+    describe "#destroy" do
+        it "should delete equipment" do
+            sign_in
+            equipment = Equipment.first
+            post :destroy, params: { id: equipment.id }
+            equipment = Equipment.find_by(id: equipment.id)
+            expect(equipment).to be_nil
         end
     end
 end
